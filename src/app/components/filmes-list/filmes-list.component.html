@@ -1,0 +1,39 @@
+<h2>Filmes Populares</h2>
+
+<input [(ngModel)]="termoBusca" placeholder="Pesquisar filme" />
+
+<div class="filmes-container">
+  <div
+    *ngFor="let filme of filmes | filtro : termoBusca"
+    (click)="verDetalhes(filme.id)"
+    class="filme"
+  >
+    <img
+      *ngIf="filme.poster_path"
+      [src]="'https://image.tmdb.org/t/p/w500' + filme.poster_path"
+      alt="{{ filme.title }}"
+      class="filme-img"
+    />
+    <div class="filme-info">
+      <h3>{{ filme.title }}</h3>
+      <p>{{ filme.release_date | formatDate }}</p>
+      <div class="filme-avaliacao">
+        <h4>Avaliação:</h4>
+        <p>{{ filme.vote_average | nota }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pagination">
+  <button (click)="paginaAnterior()" [disabled]="paginaAtual === 1">
+    Anterior
+  </button>
+  <span>Página {{ paginaAtual }}</span>
+  <button
+    (click)="proximaPagina()"
+    [disabled]="paginaAtual * filmesPorPagina >= totalFilmes"
+  >
+    Próxima
+  </button>
+</div>

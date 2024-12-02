@@ -1,0 +1,28 @@
+<header>
+  <div class="container">
+    <h1>Catálogo de Filmes</h1>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+      <li>
+        <a routerLink="/filmes" routerLinkActive="active">Lista de Filmes</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Catálogo de Filmes | Todos os direitos reservados</p>
+  </div>
+</footer>

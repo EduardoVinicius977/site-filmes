@@ -1,0 +1,30 @@
+<div class="filme-detalhes">
+  <h2 [appAvaliacaoColor]="filme.vote_average">{{ filme?.title }}</h2>
+
+  <div *ngIf="filme?.poster_path" class="filme-poster">
+    <img
+      [src]="'https://image.tmdb.org/t/p/w500' + filme.poster_path"
+      alt="{{ filme?.title }}"
+      class="img-fluid"
+    />
+  </div>
+
+  <div class="filme-sinopse">
+    <h4>Sinopse:</h4>
+    <p>{{ filme?.overview }}</p>
+  </div>
+
+  <div class="filme-lancamento">
+    <h4>Data de Lançamento:</h4>
+    <p>{{ filme?.release_date | formatDate }}</p>
+  </div>
+
+  <div class="filme-avaliacao" [appDestaque]="filme.vote_average">
+    <h4>Avaliação:</h4>
+    <p>{{ filme.vote_average | nota }}</p>
+  </div>
+
+  <div>
+    <button (click)="voltar()" class="btn btn-primary">Voltar</button>
+  </div>
+</div>

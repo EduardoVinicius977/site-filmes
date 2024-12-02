@@ -1,0 +1,24 @@
+<div class="home-container">
+  <h1>Bem-vindo ao Catálogo de Filmes</h1>
+  <p>Explore uma vasta seleção de filmes populares!</p>
+
+  <h2>Últimos Lançamentos</h2>
+  <div class="filmes-container">
+    <div
+      *ngFor="let filme of ultimosLancamentos"
+      (click)="verDetalhes(filme.id)"
+      class="filme"
+    >
+      <img
+        *ngIf="filme.poster_path"
+        [src]="'https://image.tmdb.org/t/p/w500' + filme.poster_path"
+        alt="{{ filme.title }}"
+        class="filme-img"
+      />
+      <div class="filme-info">
+        <h3>{{ filme.title }}</h3>
+        <p>{{ filme.release_date | formatDate }}</p>
+      </div>
+    </div>
+  </div>
+</div>
